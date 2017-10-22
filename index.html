@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="image/images.png" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Angular Sample App</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="newsController" style="background-color: #eee" ng-cloak>
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h1>
+					Live News!<small>  Latest updates</small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-7">
+				<input class="form-control" ng-keypress="Preview=false" ng-model="search.title" id="exampleInputEmail1" type="text" placeholder="Search news here ...." />
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-md-8" style="padding: 20px;" id="news">
+					<div ng-click = "newsClick(articles)" class="col-md-5 news" ng-repeat="articles in news.articles | filter:search">
+						<div class="media">
+				 <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" ng-src="{{articles.urlToImage}}" class="media-object imgnews" /></a>
+				<div class="media-body">
+					<h3 class="media-heading">
+						{{articles.title | limitTo:20}}.....
+					</h3><span>Author : <input type="text" ng-model="articles.author" class="form-control"/></span> <br>
+					{{articles.description | limitTo:60}}....
+					
+				</div>
+			</div>		
+					</div>
+				</div>
+				<div class="col-md-4" style="padding: 20px;">
+
+					<div class="jumbotron" style="background-color: #fff;!important;" ng-show="Preview">
+						<img  alt="Bootstrap Media Preview" ng-src="{{selectedNews.urlToImage}}" class="media-object detailimg" />
+						<h2>
+							{{selectedNews.title}}
+						</h2>
+
+						<p>Published : {{selectedNews.publishedAt}}</p>
+						<p>
+							{{selectedNews.description}}
+							<br><br>Author : {{selectedNews.author}}
+						</p>
+
+						<p>
+							<a class="btn btn-primary btn-large" href="{{selectedNews.url}}" target="_blank">More</a>
+						</p>
+					</div>
+				</div>
+		   </div>		
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+	<script src="scripts/script.js"></script>
+</html>

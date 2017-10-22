@@ -1,0 +1,19 @@
+.news{
+	min-height: 130px;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 20px;
+	margin: 10px;
+	cursor: pointer;
+}
+.imgnews{
+	width: 64px;
+	height: 64px;
+}
+.detailimg{
+	width: 200px;
+	height: 150px;
+}
+p{
+	font-size: 15px !important;
+}
